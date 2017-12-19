@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xu.tao.dao.BaseSetMapper">
+  <resultMap id="BaseResultMap" type="com.xu.tao.pojo.BaseSet">
+    <constructor>
+      <idArg column="ID" javaType="java.lang.Short" jdbcType="DECIMAL" />
+      <arg column="APP_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="APP_SECRET" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATE_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="UPDATE_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="MARK" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_ID" javaType="java.lang.Short" jdbcType="DECIMAL" />
+      <arg column="STATUS" javaType="java.lang.Short" jdbcType="DECIMAL" />
+      <arg column="TOKEN" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="WX_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, APP_ID, APP_SECRET, CREATE_DATE, UPDATE_DATE, MARK, ORG_ID, STATUS, TOKEN, WX_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ICME_PHONE_BASE_SET
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+    delete from ICME_PHONE_BASE_SET
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xu.tao.pojo.BaseSet">
+    insert into ICME_PHONE_BASE_SET (ID, APP_ID, APP_SECRET, 
+      CREATE_DATE, UPDATE_DATE, MARK, 
+      ORG_ID, STATUS, TOKEN, 
+      WX_ID)
+    values (#{id,jdbcType=DECIMAL}, #{appId,jdbcType=VARCHAR}, #{appSecret,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{mark,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{token,jdbcType=VARCHAR}, 
+      #{wxId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xu.tao.pojo.BaseSet">
+    insert into ICME_PHONE_BASE_SET
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="appId != null">
+        APP_ID,
+      </if>
+      <if test="appSecret != null">
+        APP_SECRET,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="mark != null">
+        MARK,
+      </if>
+      <if test="orgId != null">
+        ORG_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="token != null">
+        TOKEN,
+      </if>
+      <if test="wxId != null">
+        WX_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null">
+        #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="wxId != null">
+        #{wxId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xu.tao.pojo.BaseSet">
+    update ICME_PHONE_BASE_SET
+    <set>
+      <if test="appId != null">
+        APP_ID = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null">
+        APP_SECRET = #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mark != null">
+        MARK = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        ORG_ID = #{orgId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="token != null">
+        TOKEN = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="wxId != null">
+        WX_ID = #{wxId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xu.tao.pojo.BaseSet">
+    update ICME_PHONE_BASE_SET
+    set APP_ID = #{appId,jdbcType=VARCHAR},
+      APP_SECRET = #{appSecret,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      MARK = #{mark,jdbcType=VARCHAR},
+      ORG_ID = #{orgId,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      TOKEN = #{token,jdbcType=VARCHAR},
+      WX_ID = #{wxId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xu.tao.pojo.BaseSet">
+    <constructor>
+      <idArg column="ID" javaType="java.lang.Short" jdbcType="DECIMAL" />
+      <arg column="APP_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="APP_SECRET" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CREATE_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="UPDATE_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="MARK" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ORG_ID" javaType="java.lang.Short" jdbcType="DECIMAL" />
+      <arg column="STATUS" javaType="java.lang.Short" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, APP_ID, APP_SECRET, CREATE_DATE, UPDATE_DATE, MARK, ORG_ID, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ICME_PHONE_BASE_SET
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+    delete from ICME_PHONE_BASE_SET
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xu.tao.pojo.BaseSet">
+    insert into ICME_PHONE_BASE_SET (ID, APP_ID, APP_SECRET, 
+      CREATE_DATE, UPDATE_DATE, MARK, 
+      ORG_ID, STATUS)
+    values (#{id,jdbcType=DECIMAL}, #{appId,jdbcType=VARCHAR}, #{appSecret,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{mark,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xu.tao.pojo.BaseSet">
+    insert into ICME_PHONE_BASE_SET
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="appId != null">
+        APP_ID,
+      </if>
+      <if test="appSecret != null">
+        APP_SECRET,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="mark != null">
+        MARK,
+      </if>
+      <if test="orgId != null">
+        ORG_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null">
+        #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xu.tao.pojo.BaseSet">
+    update ICME_PHONE_BASE_SET
+    <set>
+      <if test="appId != null">
+        APP_ID = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null">
+        APP_SECRET = #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mark != null">
+        MARK = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        ORG_ID = #{orgId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xu.tao.pojo.BaseSet">
+    update ICME_PHONE_BASE_SET
+    set APP_ID = #{appId,jdbcType=VARCHAR},
+      APP_SECRET = #{appSecret,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      MARK = #{mark,jdbcType=VARCHAR},
+      ORG_ID = #{orgId,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
